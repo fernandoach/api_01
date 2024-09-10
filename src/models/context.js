@@ -23,10 +23,7 @@ const connectDb = async () => {
   try {
     initializeDb()
     if (state === false) {
-      await mongoose.connect(uri, {
-        useNewUrlParser: true,
-        useUnifiedTopology: true,
-      })
+      await mongoose.connect(uri)
       state = true
     }
   } catch (error) {
