@@ -1,13 +1,15 @@
 import express from 'express'
 import { createPersona } from './src/services/createPersona.js'
+import listarPersona from './src/services/listarPersona.js'
 
 const api = express()
 
 api.use(express.json())
 
 api.get('/', 
-  (request, response)=> {
-    response.json('Api Personas')
+  async (request, response)=> {
+    const personas = await listarPersona()
+    return response.json(personas)
   }
 )
 
